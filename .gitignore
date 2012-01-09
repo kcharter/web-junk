@@ -1,2 +1,11 @@
 *~
+*.o
+*.hi
+
+# don't check in stuff in the cabal-dev directory
+
 cabal-dev
+
+# used by yesod apps
+
+client_session_key.aes
