@@ -17,6 +17,8 @@ data HelloWorld = HelloWorld
 
 mkYesod "HelloWorld" [parseRoutes|
                       / HomeR GET
+                      /page1 Page1R GET
+                      /page2 Page2R GET
                       |]
 
 instance Yesod HelloWorld where
@@ -34,7 +36,10 @@ instance Yesod HelloWorld where
 -- which explains why we've got the "whamlet" quasiquotation instead
 -- of, say, a string.
 getHomeR :: Handler RepHtml
-getHomeR = defaultLayout [whamlet|Hello World! This is my first ever Yesod web app.|]
+getHomeR = defaultLayout [whamlet|Hello World! This is my first ever Yesod web app. <a href=@{Page1R}>Go to page 1!</a>. No link here.|]
+
+getPage1R = defaultLayout [whamlet|<a href=@{Page2R}>Go to page 2!|]
+getPage2R = defaultLayout [whamlet|<a href=@{HomeR}>Go home!|]
 
 -- Here, we've gone directly to 'warpDebug', but a scaffolded
 -- application would do this in a more WAI-ish way and thus be easily
