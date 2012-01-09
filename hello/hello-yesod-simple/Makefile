@@ -9,5 +9,11 @@ helloworld: helloworld.hs
 hamlet1: hamlet1.hs
 	$(GHC) $(GHC_OPTS) --make hamlet1
 
+hamlet2: hamlet2.hs
+	$(GHC) $(GHC_OPTS) --make hamlet2
+
+hamlet3: hamlet3.hs
+	$(GHC) $(GHC_OPTS) --make hamlet3
+
 clean:
-	rm -f helloworld hamlet1 *.o *.hi
+	rm -f helloworld hamlet1 hamlet2 hamlet3 *.o *.hi
