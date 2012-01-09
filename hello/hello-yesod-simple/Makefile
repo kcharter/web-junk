@@ -15,5 +15,14 @@ hamlet2: hamlet2.hs
 hamlet3: hamlet3.hs
 	$(GHC) $(GHC_OPTS) --make hamlet3
 
+hamlet4: hamlet4.hs
+	$(GHC) $(GHC_OPTS) --make hamlet4
+
+hamlet5: hamlet5.hs
+	$(GHC) $(GHC_OPTS) --make hamlet5
+
+hamlet5-prod: hamlet5.hs
+	$(GHC) $(GHC_OPTS) -cpp -DPRODUCTION --make hamlet5
+
 clean:
-	rm -f helloworld hamlet1 hamlet2 hamlet3 *.o *.hi
+	rm -f helloworld hamlet1 hamlet2 hamlet3 hamlet4 hamlet5 *.o *.hi

@@ -1,0 +1,3 @@
+foo { bar: baz }
+blah { blee: blorp }
+fee { fie : fo, fum : yip }
