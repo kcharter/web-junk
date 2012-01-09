@@ -1,0 +1,12 @@
+This is the simple by-hand 'hello world' application used as an
+example in the Yesod book. There is a lot less code here than with a
+scaffolded project, and it's useful for following the book.
+
+I've used a Makefile rather than a cabal file because for this example
+it's sufficient and a lot shorter. Since I'm using cabal-dev, I have
+to give a -package-conf argument to GHC so it can find the packages.
+
+Compiling 'helloworld.hs' doesn't take too long, but linking the
+application takes quite a while. I hope the book shows a way to speed
+up the edit-compile-test cycle; otherwise, prototyping an idea in
+yesod will be a bit sluggish.
