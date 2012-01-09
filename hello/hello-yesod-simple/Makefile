@@ -27,5 +27,8 @@ hamlet5-prod: hamlet5.hs
 hamlet6: hamlet6.hs
 	$(GHC) $(GHC_OPTS) --make hamlet6
 
+shaketext: shaketext.hs
+	$(GHC) $(GHC_OPTS) --make shaketext
+
 clean:
-	rm -f helloworld hamlet1 hamlet2 hamlet3 hamlet4 hamlet5 hamlet6 *.o *.hi
+	rm -f helloworld hamlet1 hamlet2 hamlet3 hamlet4 hamlet5 hamlet6 shaketext *.o *.hi
