@@ -33,5 +33,8 @@ shaketext: shaketext.hs
 widget1: widget1.hs
 	$(GHC) $(GHC_OPTS) --make widget1
 
+widget2: widget2.hs
+	$(GHC) $(GHC_OPTS) --make widget2
+
 clean:
-	rm -f helloworld hamlet1 hamlet2 hamlet3 hamlet4 hamlet5 hamlet6 shaketext widget1 *.o *.hi
+	rm -f helloworld hamlet1 hamlet2 hamlet3 hamlet4 hamlet5 hamlet6 shaketext widget1 widget2 *.o *.hi
