@@ -36,5 +36,8 @@ widget1: widget1.hs
 widget2: widget2.hs
 	$(GHC) $(GHC_OPTS) --make widget2
 
+forms1: forms1.hs
+	$(GHC) $(GHC_OPTS) --make forms1
+
 clean:
-	rm -f helloworld hamlet1 hamlet2 hamlet3 hamlet4 hamlet5 hamlet6 shaketext widget1 widget2 *.o *.hi
+	rm -f helloworld hamlet1 hamlet2 hamlet3 hamlet4 hamlet5 hamlet6 shaketext widget1 widget2 forms1 *.o *.hi
