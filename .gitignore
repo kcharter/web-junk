@@ -6,6 +6,11 @@
 
 cabal-dev
 
+# used by the cabal builds
+
+dist
+
 # used by yesod apps
 
 client_session_key.aes
+tmp
