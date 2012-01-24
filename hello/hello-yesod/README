@@ -44,3 +44,19 @@ notes:
   book, but it is mentioned in response to a call for Yesod
   peeves. See, for example
   http://permalink.gmane.org/gmane.comp.lang.haskell.yesod/1128
+
+- update on using cabal-dev: you can do this:
+
+  - 'cabal-dev configure' to find out the missing dependencies
+
+  - 'cabal-dev install' to install the missing dependencies; for this
+    'hello-world' example, this includes just 'cmdargs' and
+    'yesod-static'.
+
+  - 'cabal-dev configure' to complete the configuration
+
+  - 'cabal-dev/bin/yesod --dev devel' to compile and run the 'devel'
+    version of the server.
+
+  - it's a little inconsistent that 'yesod' doesn't provide 'clean'
+    and 'configure' commands, but it's not a huge wart to live with
