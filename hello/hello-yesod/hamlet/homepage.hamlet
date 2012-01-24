@@ -1,0 +1,17 @@
+<h1>Hello
+<p>This is a minor modification of the default scaffolded site in Yesod.
+<p>I had to make a few minor changes in order to get this to run.
+<p>See the 'README' file for the details.
+<p>Hmm. I thought this was supposed to reload changes automatically.
+
+<p>Oh, I think that doesn't apply by default to hamlet templates, #
+   since the changes usually requires recompilation anyways. But what's #
+   really annoying is it looks like I have to do 'cabal-dev clean' in #
+   order to get the hamlet template reprocessed. That's not very good.
+
+<p>Note that in a long paragraph in Hamlet, you need to indent the text #
+   after the first line break to get it included in the paragraph body, #
+   and you need to use hash marks at the end of each line to get the #
+   line end characters ignored.
+
+<h2 ##{h2id}>You do not have Javascript enabled.

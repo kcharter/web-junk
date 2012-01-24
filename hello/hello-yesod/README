@@ -1,0 +1,46 @@
+A "hello world" application using the Yesod web framework. A few
+notes:
+
+- the original yesod version is 0.9.4.1
+
+- I used 'yesod init' to generate the project, and selected a minimal
+  project with no database and no authentication.
+
+- under this version of yesod, the auto-generated project does not in
+  fact compile. In module 'Application', there are conflicts between
+  the identifiers 'AppConfig' and 'appPort' imported from modules
+  'Foundation' and 'Settings'.
+
+  The problem arises because 'Foundation' re-exports module
+  'Settings', but both are imported in 'Application'. The compilation
+  problem is fixed by simply modifying 'Application' to use the more
+  explicit 'Settings.AppConfig' and 'Settings.appPort'.
+
+  I suspect that the problems are just minor bugs that will be fixed
+  for Yesod 0.10. There are also a number of deprecation warnings when
+  compiling the generated 'main' module.
+
+- I still have trouble figuring out how to properly use 'cabal-dev'
+  with the scaffolded Yesod app.
+
+  - using 'cabal-dev/bin/yesod --dev configure' doesn't seem to work
+    properly, since it complains about 'cmdargs' and 'yesod-static'
+    being missing dependencies. I ended up using 'cabal-dev install'
+    in order to get the dependencies installed, even though this ends
+    up dropping the compiled binary for the project in the 'cabal-dev'
+    directory.
+
+  - after that, using 'cabal-dev/bin/yesod --dev devel' works alright.
+
+- The 'devel' server has the annoying habit of screwing up the
+  terminal settings. I find that I need to do 'stty sane' after the
+  devel server exits.
+
+- When you edit a hamlet template in the 'hamlet' directory, the
+  'yesod devel' does not automatically pick up the change. Do get the
+  devel server to notice the change, you have to touch a Haskell
+  module that loads the template -- i.e. generally a handler for the
+  corresponding page. I don't think this is mentioned in the Yesod
+  book, but it is mentioned in response to a call for Yesod
+  peeves. See, for example
+  http://permalink.gmane.org/gmane.comp.lang.haskell.yesod/1128
