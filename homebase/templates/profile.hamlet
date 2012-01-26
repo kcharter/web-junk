@@ -1,0 +1,4 @@
+<h1>_{MsgYourProfile}
+<form method=post action=@{ProfileR} enctype=#{enctype}>
+  ^{widget}
+  <input type=submit>

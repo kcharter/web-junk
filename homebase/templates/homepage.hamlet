@@ -1,7 +1,10 @@
 <h1>_{MsgHomeBase}
 <h2 ##{h2id}>You do not have Javascript enabled.
-<ul>
-$maybe aid <- maid
-  <li>_{MsgLoggedInAs (show aid)} <a href=@{AuthR LogoutR}>_{MsgLogOut}</a>
+$maybe _ <- maid
+  $maybe userName <- muserName
+    _{MsgLoggedInAs (show userName)} #
+  $nothing
+    _{MsgUnknownUser} #
+  <a href=@{ProfileR}>_{MsgUpdateProfile}</a> <a href=@{AuthR LogoutR}>_{MsgLogOut}</a>
 $nothing
-  <li><a href=@{AuthR LoginR}>_{MsgLogIn}</a>
+  <a href=@{AuthR LoginR}>_{MsgLogIn}</a>

@@ -1,6 +1,7 @@
 User
     ident Text
     password Text Maybe
+    fullName Text Maybe
     UniqueUser ident
 Email
     email Text

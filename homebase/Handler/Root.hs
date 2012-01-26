@@ -1,5 +1,7 @@
 module Handler.Root where
 
+import Control.Monad (join)
+
 import Import
 import Yesod.Auth
 
@@ -13,7 +15,11 @@ import Yesod.Auth
 getRootR :: Handler RepHtml
 getRootR = do
   maid <- maybeAuthId
+  muserName <- maybe (return Nothing) getUserName maid
   defaultLayout $ do
     h2id <- lift newIdent
     setTitle "homebase homepage"
     $(widgetFile "homepage")
+  where getUserName userId = runDB $ do
+          maybeUser <- get userId
+          return $ join $ fmap userFullName maybeUser
