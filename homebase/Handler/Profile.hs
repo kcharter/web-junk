@@ -23,6 +23,7 @@ postProfileR = do
   ((result, widget), enctype) <- runFormPost (profileForm user)
   master <- getYesod
   langs <- fmap reqLangs getRequest
+  let content = $(widgetFile "profile")
   case result of
     FormSuccess updatedUser ->
       do runDB $ update aid [UserFullName =. (userFullName updatedUser)]
@@ -30,10 +31,10 @@ postProfileR = do
          getRootR
     FormMissing ->
       do setMessage $ toHtml $ renderMessage master langs MsgMissingFormData
-         defaultLayout $(widgetFile "profile")
+         defaultLayout content
     FormFailure msgs ->
       do setMessage $ toHtml $ "There are validation errors: " ++ show msgs
-         defaultLayout $(widgetFile "profile")
+         defaultLayout content
 
 -- Unlike the forms in the examples in the 'Persistent' chapter of the
 -- Yesod book, we want to expose only part of a 'User' in the form. It
