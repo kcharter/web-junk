@@ -6,3 +6,5 @@ UpdateProfile: Update your profile
 LogIn: Log in
 LogOut: Log out
 YourProfile: Your Profile
+Success: Success!
+MissingFormData: The form is missing some data.

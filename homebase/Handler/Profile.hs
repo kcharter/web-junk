@@ -21,13 +21,15 @@ postProfileR = do
   aid <- requireAuthId
   user <- runDB $ get404 aid
   ((result, widget), enctype) <- runFormPost (profileForm user)
+  master <- getYesod
+  langs <- fmap reqLangs getRequest
   case result of
     FormSuccess updatedUser ->
       do runDB $ update aid [UserFullName =. (userFullName updatedUser)]
-         setMessage "Success!"
+         setMessage $ toHtml $ renderMessage master langs MsgSuccess
          getRootR
     FormMissing ->
-      do setMessage "The form is missing some data."
+      do setMessage $ toHtml $ renderMessage master langs MsgMissingFormData
          defaultLayout $(widgetFile "profile")
     FormFailure msgs ->
       do setMessage $ toHtml $ "There are validation errors: " ++ show msgs
