@@ -22,14 +22,13 @@ postProfileR = do
   user <- runDB $ get404 aid
   ((result, widget), enctype) <- runFormPost (profileForm user)
   let content = $(widgetFile "profile")
-  render <- getMessageRender
   case result of
     FormSuccess updatedUser ->
       do runDB $ update aid [UserFullName =. (userFullName updatedUser)]
-         setMessage $ toHtml $ render MsgSuccess
+         setMessageI MsgSuccess
          getRootR
     FormMissing ->
-      do setMessage $ toHtml $ render MsgMissingFormData
+      do setMessageI MsgMissingFormData
          defaultLayout content
     FormFailure msgs ->
       do setMessage $ toHtml $ "There are validation errors: " ++ show msgs
