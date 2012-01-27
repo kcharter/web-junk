@@ -8,3 +8,4 @@ LogOut: Log out
 YourProfile: Your Profile
 Success: Success!
 MissingFormData: The form is missing some data.
+FormValidationErrors: There are validation errors:
