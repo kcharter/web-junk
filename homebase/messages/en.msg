@@ -1,5 +1,6 @@
 Hello: Hello
 HomeBase: HomeBase, a place for your stuff
+NotLoggedIn: Not logged in.
 LoggedInAs userName@String: Logged in as #{userName}.
 UnknownUser: Logged in as an unnamed user.
 UpdateProfile: Update your profile
