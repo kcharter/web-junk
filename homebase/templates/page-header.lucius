@@ -1,0 +1,5 @@
+#header h1 {
+    text-align: center;
+    background-color: #85A3FF;
+    border: thin solid;
+}

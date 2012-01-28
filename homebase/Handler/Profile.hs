@@ -6,14 +6,17 @@ import Import
 import Yesod.Auth
 
 import Handler.Root
+import Widget.PageHeader
 
 getProfileR :: Handler RepHtml
 getProfileR = do
   aid <- requireAuthId
   user <- runDB $ get404 aid
   ((_, widget), enctype) <- generateFormPost (profileForm user)
+  header <- buildPageHeaderI MsgYourProfile
   defaultLayout $ do
     setTitle "homebase profile"
+    header
     $(widgetFile "profile")
 
 postProfileR :: Handler RepHtml
