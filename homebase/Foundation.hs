@@ -21,6 +21,7 @@ import Yesod.Static (Static, base64md5, StaticRoute(..))
 import Settings.StaticFiles
 import Yesod.Auth
 import Yesod.Auth.OpenId
+import qualified Yesod.Auth.Message as AuthMsg
 import Yesod.Default.Config
 import Yesod.Default.Util (addStaticContentExternal)
 import Yesod.Logger (Logger, logMsg, formatLogText)
@@ -41,6 +42,8 @@ import qualified Data.Text.Lazy.Encoding
 #else
 import Network.Mail.Mime (sendmail)
 #endif
+
+import Widget.PageHeader (buildPageHeaderI)
 
 -- | The site argument for your application. This can be a good place to
 -- keep settings and values requiring initialization before your application
@@ -142,6 +145,16 @@ instance YesodAuth HomeBase where
             Just (uid, _) -> return $ Just uid
             Nothing -> do
                 fmap Just $ insert $ User (credsIdent creds) Nothing Nothing
+
+    loginHandler = do
+      -- the code below is stolen from the default implementation in
+      -- Yesod.Auth, except that we use our own page header widget
+      header <- buildPageHeaderI AuthMsg.LoginTitle
+      defaultLayout $ do
+        setTitleI AuthMsg.LoginTitle
+        header
+        tm <- lift getRouteToMaster
+        mapM_ (flip apLogin tm) authPlugins
 
     -- You can add other plugins like BrowserID, email or OAuth here
     authPlugins = [authOpenId]
